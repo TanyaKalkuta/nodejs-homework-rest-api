@@ -8,8 +8,8 @@ const add = async (data) => {
     // const newContact = { ...data, id: v4() };
     const contacts = await getAll();
     const idx = contacts.length - 1;
-    console.log(idx);
-    const newContact = { ...data, id: idx };
+    const newId = contacts[idx].id + 1;
+    const newContact = { ...data, id: newId };
     // const newContact = [...contacts, newContact];
     contacts.push(newContact);
     await updateContacts(contacts);
