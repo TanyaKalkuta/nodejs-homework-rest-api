@@ -4,7 +4,7 @@ const getAll = require("./getAll");
 const del = async (id) => {
   try {
     const contacts = await getAll();
-    const idx = contacts.findIndex((item) => item.id == id);
+    const idx = contacts.findIndex((item) => item.id === +id);
     if (idx === -1) {
       return null;
     }
