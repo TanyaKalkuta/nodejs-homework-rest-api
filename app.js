@@ -11,7 +11,7 @@ const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
-//до express.json(), что бы привсти тело запроса в json применялся пакет:
+// до express.json(), что бы привeсти тело запроса в json применялся пакет:
 // app.use(bodyParser.json());
 
 app.use("/api/contacts", contactsRouter);
