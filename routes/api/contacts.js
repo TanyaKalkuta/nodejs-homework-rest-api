@@ -1,24 +1,29 @@
-const express = require("express");
+const express = require('express');
+
+const { joiSchema } = require('../../models/contact');
+const { validation } = require('../../middlewares');
+const ctrl = require('../../controllers/contacts');
+
+const validationMiddleware = validation(joiSchema);
+
 const router = express.Router();
 
-const ctrl = require("../../controllers/contacts");
-
-// const productsOperations = require("../../model/contacts");
-
 // GET /api/contacts
-router.get("/", ctrl.listContacts);
+router.get('/', ctrl.listContacts);
 
 // GET /api/contacts/48bd1cd8-72ca-42cc-8457-156bb8c30873
-router.get("/:contactId", ctrl.getContactById);
+router.get('/:contactId', ctrl.getContactById);
 
 // POST /api/contacts
-router.post("/", ctrl.addContact);
+router.post('/', validationMiddleware, ctrl.addContact);
 
-router.delete("/:contactId", ctrl.removeContact);
+router.delete('/:contactId', ctrl.removeContact);
 
 // PUT /api/contacts
-router.put("/:contactId", ctrl.updateContact);
+router.put('/:contactId', validationMiddleware, ctrl.updateContact);
 
+// PATCH /api/contacts/status
+router.patch('/:contactId/favorite', ctrl.updateStatusContact);
 module.exports = router;
 
 // было в репозитории по умолчанию

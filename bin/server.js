@@ -1,7 +1,26 @@
-const app = require("../app");
+/* eslint-disable spaced-comment */
+const mongoose = require('mongoose');
+require('dotenv').config();
+//MqmRH6EGJzVqa9B
+//-ZQbjfPPF5dB7BIfA-
 
-const { PORT = 4000 } = process.env;
+const app = require('../app');
 
-app.listen(PORT, () => {
-  console.log(`Server running. Use our API on port: ${PORT}`);
-});
+const { DB_HOST, PORT = 3000 } = process.env;
+
+mongoose
+  .connect(DB_HOST, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(
+        `Database connection successful. Server running. Use our API on port: ${PORT}`,
+      );
+    });
+  })
+  .catch(error => {
+    console.log(error);
+    process.exit(1);
+  });
