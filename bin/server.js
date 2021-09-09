@@ -1,8 +1,5 @@
-/* eslint-disable spaced-comment */
 const mongoose = require('mongoose');
 require('dotenv').config();
-//MqmRH6EGJzVqa9B
-//-ZQbjfPPF5dB7BIfA-
 
 const app = require('../app');
 
@@ -12,6 +9,9 @@ mongoose
   .connect(DB_HOST, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    /* при более низкой версии mongoose:
+     useCreateIndex: true,
+     useFindAndModify: false, */
   })
   .then(() => {
     app.listen(PORT, () => {

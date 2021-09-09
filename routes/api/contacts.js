@@ -1,29 +1,61 @@
 const express = require('express');
 
 const { joiSchema } = require('../../models/contact');
-const { validation } = require('../../middlewares');
+const {
+  validation,
+  controllerWrapper,
+  authenticate,
+} = require('../../middlewares');
+
 const ctrl = require('../../controllers/contacts');
 
-const validationMiddleware = validation(joiSchema);
+const contactValidationMiddleware = validation(joiSchema);
 
 const router = express.Router();
 
 // GET /api/contacts
-router.get('/', ctrl.listContacts);
+router.get(
+  '/',
+  controllerWrapper(authenticate),
+  controllerWrapper(ctrl.listContacts),
+);
 
 // GET /api/contacts/48bd1cd8-72ca-42cc-8457-156bb8c30873
-router.get('/:contactId', ctrl.getContactById);
+router.get(
+  '/:contactId',
+  controllerWrapper(authenticate),
+  controllerWrapper(ctrl.getContactById),
+);
 
 // POST /api/contacts
-router.post('/', validationMiddleware, ctrl.addContact);
+router.post(
+  '/',
+  controllerWrapper(authenticate),
+  contactValidationMiddleware,
+  controllerWrapper(ctrl.addContact),
+);
 
-router.delete('/:contactId', ctrl.removeContact);
+router.delete(
+  '/:contactId',
+  controllerWrapper(authenticate),
+  ctrl.removeContact,
+);
 
 // PUT /api/contacts
-router.put('/:contactId', validationMiddleware, ctrl.updateContact);
+router.put(
+  '/:contactId',
+  controllerWrapper(authenticate),
+  contactValidationMiddleware,
+  ctrl.updateContact,
+);
 
 // PATCH /api/contacts/status
-router.patch('/:contactId/favorite', ctrl.updateStatusContact);
+router.patch(
+  '/:contactId/favorite',
+  controllerWrapper(authenticate),
+  contactValidationMiddleware,
+  ctrl.updateStatusContact,
+);
 module.exports = router;
 
 // было в репозитории по умолчанию
