@@ -38,7 +38,7 @@ router.post(
 router.delete(
   '/:contactId',
   controllerWrapper(authenticate),
-  ctrl.removeContact,
+  controllerWrapper(ctrl.removeContact),
 );
 
 // PUT /api/contacts
@@ -53,7 +53,6 @@ router.put(
 router.patch(
   '/:contactId/favorite',
   controllerWrapper(authenticate),
-  contactValidationMiddleware,
   ctrl.updateStatusContact,
 );
 module.exports = router;

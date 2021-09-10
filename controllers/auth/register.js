@@ -8,18 +8,6 @@ const register = async (req, res, next) => {
   const user = await User.findOne({ email });
   if (user) {
     throw new Conflict('Already register');
-    /* return res.status(409).json({
-        status: 'error',
-        code: 409,
-        message: 'Email in use',
-        // message: 'Already register',
-      }); */
-    /* return res.status(400).json({
-         status: "error",
-         code: 400,
-         message: "Email or password wrong"
-        });
-        */
   }
   // хешируем пароль:
   const hashPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));

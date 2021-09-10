@@ -10,30 +10,12 @@ const login = async (req, res) => {
   if (!user) {
     throw new BadRequest('Wrong email');
   }
-  // if(!user || !user.comparePassword(password)) {
-  //     return res.status(400).json({
-  //         status: "error",
-  //         code: 400,
-  //         message: "Wrong email or password"
-  //     });
-  // }
-  /* if (!user) {
-      return res.status(400).json({
-        status: 'error',
-        code: 400,
-        message: 'Wrong email',
-      });
-    } */
+
   const hashPassword = user.password;
   const compareResult = bcrypt.compareSync(password, hashPassword);
   // const compareResult = user.comparePassword(password);
   if (!compareResult) {
     throw new BadRequest('Wrong password');
-    // return res.status(400).json({
-    //   status: 'error',
-    //   code: 400,
-    //   message: 'Wrong password',
-    // });
   }
 
   const payload = {

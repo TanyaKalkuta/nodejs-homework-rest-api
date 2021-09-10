@@ -1,4 +1,3 @@
-// const bcrypt = require('bcryptjs');
 const { Schema, model } = require('mongoose');
 const Joi = require('joi');
 

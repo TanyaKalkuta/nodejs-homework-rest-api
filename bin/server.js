@@ -9,9 +9,6 @@ mongoose
   .connect(DB_HOST, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    /* при более низкой версии mongoose:
-     useCreateIndex: true,
-     useFindAndModify: false, */
   })
   .then(() => {
     app.listen(PORT, () => {
