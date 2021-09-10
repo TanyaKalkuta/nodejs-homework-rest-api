@@ -54,7 +54,7 @@ const SubscriptionSchema = Schema({
   },
 });
 const joiSubscriptionSchema = Joi.object({
-  subscription: Joi.string().required(),
+  subscription: Joi.any().valid('starter', 'pro', 'business'),
 });
 
 const User = model('user', userSchema);
