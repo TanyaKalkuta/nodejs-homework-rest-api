@@ -34,6 +34,10 @@ const register = async (req, res, next) => {
     code: 201,
     message: 'Success register',
     result,
+    // user: {
+    //   email: user.email,
+    //   subscription: user.subscription,
+    // },
   });
 };
 

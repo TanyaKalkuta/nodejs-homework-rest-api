@@ -11,17 +11,14 @@ const authenticate = async (req, _, next) => {
     if (bearer !== 'Bearer') {
       throw new Unauthorized('Not authorized');
     }
-    // eslint-disable-next-line no-unused-vars
     const { id } = jwt.verify(token, SECRET_KEY);
+    const userId = await User.findById(id);
 
     const user = await User.findOne({ token });
-    if (!user) {
+    if (!user || !userId) {
       throw new Unauthorized('Not authorized');
     }
-    // const user = await User.findById(id);
-    // if (!user) {
-    //   throw new Unauthorized('Not authorized');
-    // }
+
     req.user = user;
     next();
   } catch (error) {

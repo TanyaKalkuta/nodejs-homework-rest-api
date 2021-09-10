@@ -26,4 +26,10 @@ router.get(
   controllerWrapper(ctrl.logout),
 );
 
+router.get(
+  '/current',
+  controllerWrapper(authenticate),
+  controllerWrapper(ctrl.current),
+);
+
 module.exports = router;
