@@ -6,7 +6,6 @@ const logout = async (req, res) => {
     status: 'success',
     code: 204,
     message: 'No Content',
-    // message: 'Success logout',
   });
 };
 module.exports = logout;
