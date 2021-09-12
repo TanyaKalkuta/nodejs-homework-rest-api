@@ -1,6 +1,5 @@
 const { Contact } = require('../../models');
 const { NotFound } = require('http-errors');
-// const createError = require('http-errors');
 
 const getById = async (req, res, next) => {
   const { contactId } = req.params;

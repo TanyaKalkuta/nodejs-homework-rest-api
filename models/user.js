@@ -28,7 +28,6 @@ const userSchema = Schema(
     },
   },
   { versionKey: false, timestamps: true },
-  // когда добавлен, и когда обновлен
 );
 
 /* можно так же использовать методы:

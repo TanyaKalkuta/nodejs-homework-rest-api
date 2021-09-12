@@ -13,21 +13,21 @@ const contactValidationMiddleware = validation(joiSchema);
 
 const router = express.Router();
 
-// GET /api/contacts
+/* GET /api/contacts */
 router.get(
   '/',
   controllerWrapper(authenticate),
   controllerWrapper(ctrl.listContacts),
 );
 
-// GET /api/contacts/48bd1cd8-72ca-42cc-8457-156bb8c30873
+/* GET /api/contacts/48bd1cd8-72ca-42cc-8457-156bb8c30873 */
 router.get(
   '/:contactId',
   controllerWrapper(authenticate),
   controllerWrapper(ctrl.getContactById),
 );
 
-// POST /api/contacts
+/* POST /api/contacts */
 router.post(
   '/',
   controllerWrapper(authenticate),
@@ -41,7 +41,7 @@ router.delete(
   controllerWrapper(ctrl.removeContact),
 );
 
-// PUT /api/contacts
+/* PUT /api/contacts */
 router.put(
   '/:contactId',
   controllerWrapper(authenticate),
@@ -49,7 +49,7 @@ router.put(
   ctrl.updateContact,
 );
 
-// PATCH /api/contacts/status
+/* PATCH /api/contacts/status */
 router.patch(
   '/:contactId/favorite',
   controllerWrapper(authenticate),

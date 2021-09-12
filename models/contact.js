@@ -33,7 +33,7 @@ const contactSchema = Schema(
     },
   },
   { versionKey: false, timestamps: true },
-  // когда добавлен, и когда обновлен
+  /* когда добавлен, и когда обновлен */
 );
 
 const joiSchema = Joi.object({
