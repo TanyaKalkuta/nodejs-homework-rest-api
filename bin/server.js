@@ -1,8 +1,5 @@
-/* eslint-disable spaced-comment */
 const mongoose = require('mongoose');
 require('dotenv').config();
-//MqmRH6EGJzVqa9B
-//-ZQbjfPPF5dB7BIfA-
 
 const app = require('../app');
 
