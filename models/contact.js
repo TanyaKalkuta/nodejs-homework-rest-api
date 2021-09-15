@@ -22,6 +22,11 @@ const contactSchema = Schema(
       required: true,
       match: phoneRegexp,
     },
+    image: {
+      type: String,
+      default: '',
+      // required: true,
+    },
     favorite: {
       type: Boolean,
       default: false,
@@ -40,6 +45,7 @@ const joiSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().pattern(emailRegexp).required(),
   phone: Joi.string().pattern(phoneRegexp).required(),
+  image: Joi.string(),
   favorite: Joi.boolean(),
 });
 
