@@ -1,6 +1,6 @@
 const fs = require('fs').promises;
 const path = require('path');
-const Jimp = require('jimp');
+const transformAvatars = require('../../services/transformAvatars');
 
 const { User } = require('../../models');
 
@@ -14,8 +14,7 @@ const updateImg = async (req, res) => {
 
     const uploadPath = path.join(avatarsDir, id, originalname);
 
-    const file = await Jimp.read(tempPath);
-    await file.resize(250, 250).write(tempPath);
+    await transformAvatars(tempPath);
 
     await fs.rename(tempPath, uploadPath);
     const avatarURL = `/avatars/${id}/${originalname}`;
