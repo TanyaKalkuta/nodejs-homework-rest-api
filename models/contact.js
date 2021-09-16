@@ -25,7 +25,6 @@ const contactSchema = Schema(
     image: {
       type: String,
       default: '',
-      // required: true,
     },
     favorite: {
       type: Boolean,
