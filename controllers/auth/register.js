@@ -27,8 +27,8 @@ const register = async (req, res, next) => {
   const result = await User.create(newUser);
 
   const id = result._id.toString();
-  const dirPath = path.join(usersDir, id);
-  await fs.mkdir(dirPath);
+  const avatarPath = path.join(usersDir, id);
+  await fs.mkdir(avatarPath);
 
   res.status(201).json({
     status: 'success',
