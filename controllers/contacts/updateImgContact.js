@@ -12,6 +12,7 @@ const updateImgContact = async (req, res) => {
     const { path: tempPath, originalname } = req.file;
 
     const uploadPath = path.join(contactsDir, id, originalname);
+
     await fs.rename(tempPath, uploadPath);
     const image = `/contacts/${id}/${originalname}`;
     await Contact.findByIdAndUpdate(id, { image });

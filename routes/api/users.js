@@ -7,7 +7,7 @@ const {
   authenticate,
   upload,
 } = require('../../middlewares');
-const { auth: ctrl } = require('../../controllers');
+const { users: ctrl } = require('../../controllers');
 
 const router = express.Router();
 
