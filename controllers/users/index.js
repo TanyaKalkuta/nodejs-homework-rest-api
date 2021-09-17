@@ -3,6 +3,7 @@ const login = require('./login');
 const logout = require('./logout');
 const current = require('./current');
 const updateSubscription = require('./updateSubscription');
+const updateImg = require('./updateImg');
 
 module.exports = {
   register,
@@ -10,4 +11,5 @@ module.exports = {
   logout,
   current,
   updateSubscription,
+  updateImg,
 };
