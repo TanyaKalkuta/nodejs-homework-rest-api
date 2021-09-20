@@ -28,6 +28,7 @@ const updateImg = async (req, res) => {
       },
     });
   } catch (error) {
+    // eslint-disable-next-line no-undef
     await fs.unlink(tempPath);
     throw error;
   }
