@@ -20,6 +20,10 @@ router.post(
   controllerWrapper(ctrl.register),
 );
 
+router.get('/verify/:verifyToken', controllerWrapper(ctrl.verify));
+
+router.post('/verify', controllerWrapper(ctrl.repeatVerify));
+
 router.post('/login', userValidationMiddleware, controllerWrapper(ctrl.login));
 
 router.get(
